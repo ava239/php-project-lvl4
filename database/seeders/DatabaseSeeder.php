@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\TaskStatus;
+use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +15,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        TaskStatus::factory()->count(4)->state(
+            new Sequence(
+                ['name' => 'new'],
+                ['name' => 'in_work'],
+                ['name' => 'testing'],
+                ['name' => 'finished'],
+            )
+        )->create();
     }
 }
