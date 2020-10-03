@@ -132,4 +132,19 @@ class TasksTest extends TestCase
         $response->assertOk()
             ->assertSee($task->name);
     }
+
+    public function testUnathorizedDestroy()
+    {
+        $task = Task::factory()->create();
+        $taskData = $task->only('id', 'name');
+
+        $this->assertDatabaseHas('tasks', $taskData);
+
+        $this->setupUser();
+        $response = $this->delete(route('tasks.destroy', $task));
+
+        $response->assertForbidden();
+
+        $this->assertDatabaseHas('tasks', $taskData);
+    }
 }
