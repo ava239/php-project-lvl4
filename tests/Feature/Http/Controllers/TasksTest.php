@@ -121,4 +121,12 @@ class TasksTest extends TestCase
 
         $this->assertDatabaseMissing('tasks', $task);
     }
+
+    public function testShow()
+    {
+        $task = Task::inRandomOrder()->first();
+        $response = $this->get(route('tasks.show', $task));
+        $response->assertOk()
+            ->assertSee($task->name);
+    }
 }
