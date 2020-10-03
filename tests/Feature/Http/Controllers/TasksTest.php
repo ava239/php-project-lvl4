@@ -128,6 +128,7 @@ class TasksTest extends TestCase
     {
         $task = Task::inRandomOrder()->first();
         $response = $this->get(route('tasks.show', $task));
+
         $response->assertOk()
             ->assertSee($task->name);
     }

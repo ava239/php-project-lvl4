@@ -3,6 +3,7 @@
 return [
     'menu_link' => 'Tasks',
     'title' => 'Tasks',
+    'show_title' => 'Task',
     'add_new' => 'Add New',
     'id' => 'ID',
     'status' => 'Status',

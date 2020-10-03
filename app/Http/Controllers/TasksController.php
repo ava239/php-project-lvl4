@@ -12,7 +12,7 @@ class TasksController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index']]);
+        $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
     public function index()
@@ -60,7 +60,7 @@ class TasksController extends Controller
 
     public function show(Task $task)
     {
-        //
+        return view('tasks.show', compact('task'));
     }
 
     public function edit($id)
