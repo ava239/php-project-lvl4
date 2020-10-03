@@ -19,8 +19,7 @@ class TaskStatusesTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $this->actingAs($user)
-            ->get('/');
+        $this->actingAs($user);
     }
 
     public function testIndex()
