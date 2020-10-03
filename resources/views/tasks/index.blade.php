@@ -2,40 +2,46 @@
 @section('content')
     <div class="container">
         <h1 class="mb-5">{{ __('tasks.title') }}</h1>
-        @can('create', App\Task::class)
+        @auth
             <a href="{{ route('tasks.create') }}" class="btn btn-primary">{{ __('tasks.add_new') }}</a>
-        @endcan
+        @endauth
         <table class="table mt-2">
             <thead>
             <tr>
                 <th>{{ __('tasks.id') }}</th>
+                <th>{{ __('tasks.status') }}</th>
                 <th>{{ __('tasks.name') }}</th>
+                <th>{{ __('tasks.creator') }}</th>
+                <th>{{ __('tasks.assignee') }}</th>
                 <th>{{ __('tasks.created_at') }}</th>
-                @canany(['delete','update'], App\Task::class)
+                @auth
                     <th>{{ __('tasks.actions') }}</th>
-                @endcanany
+                @endauth
             </tr>
             </thead>
             @foreach($tasks as $task)
                 <tr>
                     <td>{{ $task->id }}</td>
+                    <td>{{ $task->status->name }}</td>
                     <td>{{ $task->name }}</td>
+                    <td>{{ $task->creator->name }}</td>
+                    <td>{{ $task->assignee->name }}</td>
                     <td>{{ $task->created_at }}</td>
-                    @canany(['delete','update'], $task)
+                    @auth
                         <td>
                             @can('delete', $task)
-                                <a href="{{ route('task_statuses.destroy', $task) }}" data-confirm="are you sure?"
+                                <a href="{{ route('tasks.destroy', $task) }}" data-confirm="{{ __('tasks.confirmation') }}"
                                    data-method="delete">
-                                    {{ __('task_statuses.remove') }}
+                                    {{ __('tasks.remove') }}
                                 </a>
                             @endcan
                             @can('update', $task)
-                                <a href="{{ route('task_statuses.edit', $task) }}">
-                                    {{ __('task_statuses.edit') }}
+                                <a href="{{ route('tasks.edit', $task) }}">
+                                    {{ __('tasks.edit') }}
                                 </a>
                             @endcan
                         </td>
-                    @endcanany
+                    @endauth
                 </tr>
             @endforeach
         </table>
