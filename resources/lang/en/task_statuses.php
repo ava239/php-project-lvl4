@@ -12,6 +12,7 @@ return [
     'title' => 'Task Statuses',
     'update' => 'Update',
     'create' => 'Create',
+    'confirmation' => 'are you sure?',
     'edit_title' => 'Edit Task Status',
     'create_title' => 'Add New Task Status',
     'created' => 'Status has been added',

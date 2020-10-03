@@ -24,7 +24,7 @@
                     @canany(['delete','update'], $taskStatus)
                     <td>
                         @can('delete', $taskStatus)
-                            <a href="{{ route('task_statuses.destroy', $taskStatus) }}" data-confirm="are you sure?"
+                            <a href="{{ route('task_statuses.destroy', $taskStatus) }}" data-confirm="{{ __('task_statuses.confirmation') }}"
                                data-method="delete">
                                 {{ __('task_statuses.remove') }}
                             </a>
