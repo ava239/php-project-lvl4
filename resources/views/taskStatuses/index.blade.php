@@ -1,18 +1,18 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
-        <h1 class="mb-5">{{ __('task_status.title') }}</h1>
+        <h1 class="mb-5">{{ __('task_statuses.title') }}</h1>
         @can('create', App\TaskStatus::class)
-            <a href="{{ route('task_statuses.create') }}" class="btn btn-primary">{{ __('task_status.add_new') }}</a>
+            <a href="{{ route('task_statuses.create') }}" class="btn btn-primary">{{ __('task_statuses.add_new') }}</a>
         @endcan
         <table class="table mt-2">
             <thead>
             <tr>
-                <th>{{ __('task_status.id') }}</th>
-                <th>{{ __('task_status.name') }}</th>
-                <th>{{ __('task_status.created_at') }}</th>
+                <th>{{ __('task_statuses.id') }}</th>
+                <th>{{ __('task_statuses.name') }}</th>
+                <th>{{ __('task_statuses.created_at') }}</th>
                 @canany(['delete','update'], App\TaskStatus::class)
-                <th>{{ __('task_status.actions') }}</th>
+                <th>{{ __('task_statuses.actions') }}</th>
                 @endcanany
             </tr>
             </thead>
@@ -26,12 +26,12 @@
                         @can('delete', $taskStatus)
                             <a href="{{ route('task_statuses.destroy', $taskStatus) }}" data-confirm="are you sure?"
                                data-method="delete">
-                                {{ __('task_status.remove') }}
+                                {{ __('task_statuses.remove') }}
                             </a>
                         @endcan
                         @can('update', $taskStatus)
                             <a href="{{ route('task_statuses.edit', $taskStatus) }}">
-                                {{ __('task_status.edit') }}
+                                {{ __('task_statuses.edit') }}
                             </a>
                         @endcan
                     </td>
