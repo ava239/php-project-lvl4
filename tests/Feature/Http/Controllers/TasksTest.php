@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Http\Controllers;
 
+use App\Models\Task;
 use App\Models\TaskStatus;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
