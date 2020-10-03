@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\TasksController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskStatusesController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,5 +21,6 @@ Route::get('/', function () {
 })->name('welcome');
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::resource('task_statuses', TaskStatusesController::class);
+Route::resource('tasks', TasksController::class);

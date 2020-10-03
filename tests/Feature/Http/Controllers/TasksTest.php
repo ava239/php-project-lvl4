@@ -16,6 +16,12 @@ class TasksTest extends TestCase
 
     private bool $seed = true;
 
+    public function setUp(): void
+    {
+        parent::setUp();
+        Task::factory()->count(3)->create();
+    }
+
     public function setupUser(): User
     {
         $user = User::factory()->create();
@@ -26,7 +32,7 @@ class TasksTest extends TestCase
 
     public function testIndex()
     {
-        $task = Task::first();
+        $task = Task::inRandomOrder()->first();
         $response = $this->get(route('tasks.index'));
         $response->assertOk()
             ->assertSee($task->name);
@@ -80,7 +86,7 @@ class TasksTest extends TestCase
         $status = TaskStatus::inRandomOrder()->first();
         $assignee = User::inRandomOrder()->first();
         $data = [
-            'name' => $this->faker->name,
+            'name' => $this->faker->text(20),
             'description' => $this->faker->text,
             'status_id' => $status->id,
             'assigned_to_id' => $assignee->id

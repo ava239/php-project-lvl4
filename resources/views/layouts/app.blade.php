@@ -34,7 +34,8 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <a class="nav-link @if(Route::is('task_statuses.index')) active @endif" href="{{ route('task_statuses.index') }}">{{ __('task_status.menu_link') }}</a>
+                        <a class="nav-link @if(Route::is('tasks.index')) active @endif" href="{{ route('tasks.index') }}">{{ __('tasks.menu_link') }}</a>
+                        <a class="nav-link @if(Route::is('task_statuses.index')) active @endif" href="{{ route('task_statuses.index') }}">{{ __('task_statuses.menu_link') }}</a>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
