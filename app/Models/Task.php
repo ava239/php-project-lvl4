@@ -9,8 +9,6 @@ class Task extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'created_by_id', 'assigned_to_id', 'status_id'];
-
     public function creator()
     {
         return $this->belongsTo(User::class, 'created_by_id');

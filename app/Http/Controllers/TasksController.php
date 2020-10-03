@@ -63,9 +63,13 @@ class TasksController extends Controller
         //
     }
 
-    public function edit(Task $task)
+    public function edit($id)
     {
-        //
+        $task = Task::findOrFail($id);
+        $taskStatuses = TaskStatus::all();
+        $users = User::all();
+
+        return view('tasks.edit', compact('task', 'taskStatuses', 'users'));
     }
 
     public function update(Request $request, Task $task)
