@@ -17,4 +17,7 @@ return [
     'create' => 'Create',
     'remove' => 'Remove',
     'edit' => 'Edit',
+    'choose_status' => 'Status',
+    'choose_assignee' => 'Assignee',
+    'created' => 'Task has been added',
 ];
