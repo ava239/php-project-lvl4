@@ -22,4 +22,6 @@ return [
     'choose_status' => 'Status',
     'choose_assignee' => 'Assignee',
     'created' => 'Task has been added',
+    'updated' => 'Task has been updated',
+    'deleted' => 'Task has been deleted',
 ];

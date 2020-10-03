@@ -25,7 +25,7 @@
                     <td>{{ $task->status->name }}</td>
                     <td>{{ $task->name }}</td>
                     <td>{{ $task->creator->name }}</td>
-                    <td>{{ $task->assignee->name }}</td>
+                    <td>{{ optional($task->assignee)->name }}</td>
                     <td>{{ $task->created_at }}</td>
                     @auth
                         <td>
