@@ -40,16 +40,15 @@ class TaskStatusesTest extends TestCase
     public function testStore()
     {
         $this->setupUser();
-        $name = $this->faker->name;
         $data = [
-            'name' => $name
+            'name' => $this->faker->text(20)
         ];
         $response = $this->post(route('task_statuses.store'), $data);
 
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
 
-        $this->assertDatabaseHas('task_statuses', ['name' => $name]);
+        $this->assertDatabaseHas('task_statuses', $data);
     }
 
     public function testEdit()
@@ -65,16 +64,15 @@ class TaskStatusesTest extends TestCase
     {
         $this->setupUser();
         $taskStatus = TaskStatus::inRandomOrder()->first();
-        $name = $this->faker->name;
         $data = [
-            'name' => $name
+            'name' => $this->faker->text(20)
         ];
         $response = $this->patch(route('task_statuses.update', $taskStatus), $data);
 
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
 
-        $this->assertDatabaseHas('task_statuses', ['id' => $taskStatus->id, 'name' => $name]);
+        $this->assertDatabaseHas('task_statuses', array_merge(['id' => $taskStatus->id], $data));
     }
 
     public function testDestroy()
