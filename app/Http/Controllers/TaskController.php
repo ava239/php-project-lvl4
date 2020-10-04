@@ -8,11 +8,11 @@ use App\Models\User;
 use Auth;
 use Illuminate\Http\Request;
 
-class TasksController extends Controller
+class TaskController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index', 'show']]);
+        $this->authorizeResource(Task::class);
     }
 
     public function index()
@@ -63,9 +63,8 @@ class TasksController extends Controller
         return view('tasks.show', compact('task'));
     }
 
-    public function edit($id)
+    public function edit(Task $task)
     {
-        $task = Task::findOrFail($id);
         $taskStatuses = TaskStatus::all();
         $users = User::all();
 

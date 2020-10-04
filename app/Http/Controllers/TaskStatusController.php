@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\TaskStatus;
 use Illuminate\Http\Request;
 
-class TaskStatusesController extends Controller
+class TaskStatusController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index']]);
+        $this->authorizeResource(TaskStatus::class);
     }
 
     public function index()
@@ -45,17 +45,13 @@ class TaskStatusesController extends Controller
             ->route('task_statuses.index');
     }
 
-    public function edit($id)
+    public function edit(TaskStatus $taskStatus)
     {
-        $taskStatus = TaskStatus::findOrFail($id);
-
         return view('taskStatuses.edit', compact('taskStatus'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, TaskStatus $taskStatus)
     {
-        $taskStatus = TaskStatus::findOrFail($id);
-
         $data = $this->validate(
             $request,
             [
@@ -72,13 +68,11 @@ class TaskStatusesController extends Controller
             ->route('task_statuses.index');
     }
 
-    public function destroy($id)
+    public function destroy(TaskStatus $taskStatus)
     {
-        $taskStatus = TaskStatus::find($id);
-        if ($taskStatus) {
-            $taskStatus->delete();
-            flash(__('task_statuses.deleted'))->success();
-        }
+        $taskStatus->delete();
+        flash(__('task_statuses.deleted'))->success();
+
         return redirect()
             ->route('task_statuses.index');
     }

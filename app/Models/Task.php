@@ -23,4 +23,9 @@ class Task extends Model
     {
         return $this->belongsTo(TaskStatus::class, 'status_id');
     }
+
+    public function isCreatedBy(User $user): bool
+    {
+        return $this->creator->id === $user->id;
+    }
 }
