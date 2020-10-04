@@ -4,10 +4,7 @@
     <div class="container">
         <div class="jumbotron">
             <h1 class="display-4">{{ config('app.name') }}</h1>
-            <p class="lead">Simple implementation of typical task manager</p>
-            <hr class="my-4">
-            <p>Hexlet Project</p>
-            <a class="btn btn-primary btn-lg" href="https://hexlet.io" role="button">Learn more</a>
+            <p class="lead">{{ __('app_name') }}</p>
         </div>
     </div>
 @endsection
