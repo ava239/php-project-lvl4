@@ -9,6 +9,16 @@
         </h1>
         <p>{{ __('name') }}: {{ $task->name }}</p>
         <p>{{ __('status') }}: {{ $task->status->name }}</p>
-        <p>{{ __('description') }}: {{ $task->description }}</p>
+        @if($task->description)
+            <p>{{ __('description') }}: {{ $task->description }}</p>
+        @endif
+        @if($task->labels->count())
+            <p>{{ __('labels') }}: </p>
+            <ul>
+                @foreach($task->labels as $label)
+                    <li>{{ $label->name }}</li>
+                @endforeach
+            </ul>
+        @endif
     </div>
 @endsection

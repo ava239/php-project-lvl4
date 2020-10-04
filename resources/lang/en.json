@@ -13,5 +13,6 @@
     "confirmation" : "are you sure?",
     "description" : "Description",
     "creator": "Creator",
-    "assignee": "Assignee"
+    "assignee": "Assignee",
+    "labels": "Labels"
 }

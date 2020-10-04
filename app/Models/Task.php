@@ -24,6 +24,11 @@ class Task extends Model
         return $this->belongsTo(TaskStatus::class, 'status_id');
     }
 
+    public function labels()
+    {
+        return $this->belongsToMany(Label::class)->withTimestamps();
+    }
+
     public function isCreatedBy(User $user): bool
     {
         return $this->creator->id === $user->id;

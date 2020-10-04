@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Label;
 use App\Models\Task;
 use App\Models\TaskStatus;
 use App\Models\User;
@@ -27,8 +28,11 @@ class TaskController extends Controller
         $task = new Task();
         $taskStatuses = TaskStatus::all();
         $users = User::all();
+        $labels = Label::all();
 
-        return view('tasks.create', compact('task', 'taskStatuses', 'users'));
+        $taskLabels = [];
+
+        return view('tasks.create', compact('task', 'taskStatuses', 'users', 'labels', 'taskLabels'));
     }
 
     public function store(Request $request)
@@ -40,6 +44,7 @@ class TaskController extends Controller
                 'description' => 'max:500',
                 'status_id' => 'required|exists:App\Models\TaskStatus,id',
                 'assigned_to_id' => 'nullable|exists:App\Models\User,id',
+                'labels.*' => 'required|exists:App\Models\Label,id',
             ]
         );
 
@@ -51,6 +56,7 @@ class TaskController extends Controller
         $task->creator()->associate(Auth::user());
 
         $task->saveOrFail();
+        $task->labels()->attach($request->input('labels'));
 
         flash(__('tasks.created'))->success();
 
@@ -67,8 +73,11 @@ class TaskController extends Controller
     {
         $taskStatuses = TaskStatus::all();
         $users = User::all();
+        $labels = Label::all();
 
-        return view('tasks.edit', compact('task', 'taskStatuses', 'users'));
+        $taskLabels = $task->labels->keyBy('id')->keys()->toArray();
+
+        return view('tasks.edit', compact('task', 'taskStatuses', 'users', 'labels', 'taskLabels'));
     }
 
     public function update(Request $request, Task $task)
@@ -80,6 +89,7 @@ class TaskController extends Controller
                 'description' => 'max:500',
                 'status_id' => 'required|exists:App\Models\TaskStatus,id',
                 'assigned_to_id' => 'nullable|exists:App\Models\User,id',
+                'labels.*' => 'required|exists:App\Models\Label,id',
             ]
         );
 
@@ -88,6 +98,7 @@ class TaskController extends Controller
 
         $task->status()->associate($request->input('status_id'));
         $task->assignee()->associate($request->input('assigned_to_id'));
+        $task->labels()->sync($request->input('labels'));
 
         $task->saveOrFail();
 
