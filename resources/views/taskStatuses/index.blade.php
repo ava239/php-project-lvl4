@@ -3,16 +3,16 @@
     <div class="container">
         <h1 class="mb-5">{{ __('task_statuses.title') }}</h1>
         @auth
-            <a href="{{ route('task_statuses.create') }}" class="btn btn-primary">{{ __('task_statuses.add_new') }}</a>
+            <a href="{{ route('task_statuses.create') }}" class="btn btn-primary">{{ __('add_new') }}</a>
         @endauth
         <table class="table mt-2">
             <thead>
             <tr>
-                <th>{{ __('task_statuses.id') }}</th>
-                <th>{{ __('task_statuses.name') }}</th>
-                <th>{{ __('task_statuses.created_at') }}</th>
+                <th>{{ __('id') }}</th>
+                <th>{{ __('name') }}</th>
+                <th>{{ __('created_at') }}</th>
                 @auth
-                    <th>{{ __('task_statuses.actions') }}</th>
+                    <th>{{ __('actions') }}</th>
                 @endauth
             </tr>
             </thead>
@@ -25,14 +25,14 @@
                         <td>
                             @can('delete', $taskStatus)
                                 <a href="{{ route('task_statuses.destroy', $taskStatus) }}"
-                                   data-confirm="{{ __('task_statuses.confirmation') }}"
+                                   data-confirm="{{ __('confirmation') }}"
                                    data-method="delete">
-                                    {{ __('task_statuses.remove') }}
+                                    {{ __('remove') }}
                                 </a>
                             @endcan
                             @can('update', $taskStatus)
                                 <a href="{{ route('task_statuses.edit', $taskStatus) }}">
-                                    {{ __('task_statuses.edit') }}
+                                    {{ __('edit') }}
                                 </a>
                             @endcan
                         </td>

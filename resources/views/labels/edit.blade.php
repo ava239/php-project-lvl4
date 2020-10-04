@@ -5,7 +5,7 @@
         {!! Form::open()->fill($label)->route('labels.update', [$label])->method('PATCH')->attrs(['class' => 'w-50']) !!}
         @include('labels.form')
         <div>
-            {!! Form::submit(__('labels.update')) !!}
+            {!! Form::submit(__('update')) !!}
         </div>
         {!! Form::close() !!}
     </div>

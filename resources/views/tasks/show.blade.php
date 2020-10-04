@@ -7,8 +7,8 @@
                 <a href="{{ route('tasks.edit', $task) }}">&#9881;</a>
             @endauth
         </h1>
-        <p>{{ __('tasks.name') }}: {{ $task->name }}</p>
-        <p>{{ __('tasks.status') }}: {{ $task->status->name }}</p>
-        <p>{{ __('tasks.description') }}: {{ $task->description }}</p>
+        <p>{{ __('name') }}: {{ $task->name }}</p>
+        <p>{{ __('status') }}: {{ $task->status->name }}</p>
+        <p>{{ __('description') }}: {{ $task->description }}</p>
     </div>
 @endsection

@@ -3,16 +3,16 @@
     <div class="container">
         <h1 class="mb-5">{{ __('labels.title') }}</h1>
         @auth
-            <a href="{{ route('labels.create') }}" class="btn btn-primary">{{ __('labels.add_new') }}</a>
+            <a href="{{ route('labels.create') }}" class="btn btn-primary">{{ __('add_new') }}</a>
         @endauth
         <table class="table mt-2">
             <thead>
             <tr>
-                <th>{{ __('labels.id') }}</th>
-                <th>{{ __('labels.name') }}</th>
-                <th>{{ __('labels.created_at') }}</th>
+                <th>{{ __('id') }}</th>
+                <th>{{ __('name') }}</th>
+                <th>{{ __('created_at') }}</th>
                 @auth
-                    <th>{{ __('labels.actions') }}</th>
+                    <th>{{ __('actions') }}</th>
                 @endauth
             </tr>
             </thead>
@@ -25,14 +25,14 @@
                         <td>
                             @can('delete', $label)
                                 <a href="{{ route('labels.destroy', $label) }}"
-                                   data-confirm="{{ __('labels.confirmation') }}"
+                                   data-confirm="{{ __('confirmation') }}"
                                    data-method="delete">
-                                    {{ __('labels.remove') }}
+                                    {{ __('remove') }}
                                 </a>
                             @endcan
                             @can('update', $label)
                                 <a href="{{ route('labels.edit', $label) }}">
-                                    {{ __('labels.edit') }}
+                                    {{ __('edit') }}
                                 </a>
                             @endcan
                         </td>

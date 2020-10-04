@@ -5,7 +5,7 @@
         {!! Form::open()->route('labels.store')->fill($label)->attrs(['class' => 'w-50']) !!}
         @include('labels.form')
         <div>
-            {!! Form::submit(__('labels.create')) !!}
+            {!! Form::submit(__('create')) !!}
         </div>
         {!! Form::close() !!}
     </div>

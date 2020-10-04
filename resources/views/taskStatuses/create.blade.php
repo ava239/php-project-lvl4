@@ -5,7 +5,7 @@
         {!! Form::open()->route('task_statuses.store')->fill($taskStatus)->attrs(['class' => 'w-50']) !!}
         @include('taskStatuses.form')
         <div>
-            {!! Form::submit(__('task_statuses.create')) !!}
+            {!! Form::submit(__('create')) !!}
         </div>
         {!! Form::close() !!}
     </div>

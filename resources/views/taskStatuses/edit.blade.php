@@ -5,7 +5,7 @@
         {!! Form::open()->fill($taskStatus)->route('task_statuses.update', [$taskStatus])->method('PATCH')->attrs(['class' => 'w-50']) !!}
         @include('taskStatuses.form')
         <div>
-            {!! Form::submit(__('task_statuses.update')) !!}
+            {!! Form::submit(__('update')) !!}
         </div>
         {!! Form::close() !!}
     </div>

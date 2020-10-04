@@ -1,2 +1,2 @@
-{!! Form::text('name', __('task_statuses.name')) !!}
+{!! Form::text('name', __('name')) !!}
 
