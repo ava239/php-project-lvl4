@@ -12,7 +12,7 @@
         @if($task->description)
             <p>{{ __('description') }}: {{ $task->description }}</p>
         @endif
-        @if($task->labels->count())
+        @if($task->labels()->exists())
             <p>{{ __('labels') }}: </p>
             <ul>
                 @foreach($task->labels as $label)
