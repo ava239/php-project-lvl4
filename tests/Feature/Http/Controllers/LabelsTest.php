@@ -13,6 +13,12 @@ class LabelsTest extends TestCase
     use RefreshDatabase;
     use WithFaker;
 
+    public function setUp(): void
+    {
+        parent::setUp();
+        Label::factory()->count(3)->create();
+    }
+
     public function setupUser()
     {
         $user = User::factory()->create();
