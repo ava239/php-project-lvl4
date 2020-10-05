@@ -26,7 +26,7 @@
                             @can('delete', $taskStatus)
                                 <a href="{{ route('task_statuses.destroy', $taskStatus) }}"
                                    data-confirm="{{ __('confirmation') }}"
-                                   data-method="delete">
+                                   data-method="delete" rel="nofollow">
                                     {{ __('remove') }}
                                 </a>
                             @endcan

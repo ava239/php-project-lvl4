@@ -14,5 +14,7 @@
     "description" : "Description",
     "creator": "Creator",
     "assignee": "Assignee",
-    "labels": "Labels"
+    "labels": "Labels",
+    "reset": "Reset",
+    "apply": "Apply"
 }

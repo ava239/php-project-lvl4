@@ -2,9 +2,22 @@
 @section('content')
     <div class="container">
         <h1 class="mb-5">{{ __('tasks.title') }}</h1>
-        @auth
-            <a href="{{ route('tasks.create') }}" class="btn btn-primary">{{ __('add_new') }}</a>
-        @endauth
+        <div class="d-flex">
+            <div>
+                {!! Form::open()->get()->formInline()->fill($filter)->attrs(['class' => 'filter-form']) !!}
+                {!! Form::select('filter[status_id]', null, $taskStatuses) !!}
+                {!! Form::select('filter[created_by_id]', null, $creators) !!}
+                {!! Form::select('filter[assigned_to_id]', null, $assignees) !!}
+                {!! Form::submit(__('apply'))->outline() !!}
+                @if($filter->count())
+                    <a href="{{ route('tasks.index') }}" class="btn btn-outline-danger">{{ __('reset') }}</a>
+                @endif
+                {!! Form::close() !!}
+            </div>
+            @auth
+                <a href="{{ route('tasks.create') }}" class="btn btn-primary ml-auto">{{ __('add_new') }}</a>
+            @endauth
+        </div>
         <table class="table mt-2">
             <thead>
             <tr>
@@ -31,7 +44,7 @@
                         <td>
                             @can('delete', $task)
                                 <a href="{{ route('tasks.destroy', $task) }}" data-confirm="{{ __('confirmation') }}"
-                                   data-method="delete">
+                                   data-method="delete" rel="nofollow">
                                     {{ __('remove') }}
                                 </a>
                             @endcan

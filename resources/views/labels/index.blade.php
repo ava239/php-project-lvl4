@@ -26,7 +26,7 @@
                             @can('delete', $label)
                                 <a href="{{ route('labels.destroy', $label) }}"
                                    data-confirm="{{ __('confirmation') }}"
-                                   data-method="delete">
+                                   data-method="delete" rel="nofollow">
                                     {{ __('remove') }}
                                 </a>
                             @endcan

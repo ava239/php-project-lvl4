@@ -6,3 +6,13 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+.filter-form {
+    .input-group>.custom-select:not(:first-child), .input-group>.form-control:not(:first-child) {
+        border-radius: .25rem;
+        margin-right: .5rem;
+    }
+    label.ml-sm-2, label.mx-sm-2 {
+        margin: 0!important;
+    }
+}
