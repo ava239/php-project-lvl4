@@ -14,7 +14,7 @@ class TaskStatusController extends Controller
 
     public function index()
     {
-        $taskStatuses = TaskStatus::orderBy('name')->paginate(15);
+        $taskStatuses = TaskStatus::paginate(15);
 
         return view('taskStatuses.index', compact('taskStatuses'));
     }
@@ -37,7 +37,7 @@ class TaskStatusController extends Controller
 
         $taskStatus = new TaskStatus();
         $taskStatus->fill($data);
-        $taskStatus->save();
+        $taskStatus->saveOrFail();
 
         flash(__('task_statuses.created'))->success();
 
@@ -60,7 +60,7 @@ class TaskStatusController extends Controller
         );
 
         $taskStatus->fill($data);
-        $taskStatus->save();
+        $taskStatus->saveOrFail();
 
         flash(__('task_statuses.updated'))->success();
 

@@ -14,7 +14,7 @@ class LabelController extends Controller
 
     public function index()
     {
-        $labels = Label::orderBy('name')->paginate(15);
+        $labels = Label::paginate(15);
 
         return view('labels.index', compact('labels'));
     }
@@ -38,7 +38,7 @@ class LabelController extends Controller
 
         $taskStatus = new Label();
         $taskStatus->fill($data);
-        $taskStatus->save();
+        $taskStatus->saveOrFail();
 
         flash(__('labels.created'))->success();
 
@@ -62,7 +62,7 @@ class LabelController extends Controller
         );
 
         $label->fill($data);
-        $label->save();
+        $label->saveOrFail();
 
         flash(__('labels.updated'))->success();
 

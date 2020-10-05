@@ -26,6 +26,7 @@ class TaskController extends Controller
                 AllowedFilter::exact('assigned_to_id'),
                 AllowedFilter::exact('created_by_id')
             ])
+            ->latest()
             ->paginate(15);
 
         $filter = collect($request->input('filter'))->mapWithKeys(function ($value, $key) {
