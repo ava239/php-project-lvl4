@@ -15,39 +15,38 @@ class TasksTest extends TestCase
     use WithFaker;
 
     private bool $seed = true;
+    private User $user;
 
     public function setUp(): void
     {
         parent::setUp();
         Task::factory()->count(3)->create();
-    }
-
-    public function setupUser(): User
-    {
-        $user = User::factory()->create();
-        $this->actingAs($user);
-
-        return $user;
+        $this->user = User::factory()->create();
     }
 
     public function testIndex()
     {
         $task = Task::inRandomOrder()->first();
+
         $response = $this->get(route('tasks.index'));
+
         $response->assertOk()
             ->assertSee($task->name);
     }
 
     public function testCreate()
     {
-        $this->setupUser();
+        $this->actingAs($this->user);
+
         $response = $this->get(route('tasks.create'));
+
         $response->assertOk();
     }
 
     public function testStore()
     {
-        $user = $this->setupUser();
+        $this->actingAs($this->user);
+
         $status = TaskStatus::inRandomOrder()->first();
         $assignee = User::inRandomOrder()->first();
         $data = [
@@ -56,32 +55,33 @@ class TasksTest extends TestCase
             'status_id' => $status->id,
             'assigned_to_id' => $assignee->id
         ];
+
         $response = $this->post(route('tasks.store'), $data);
 
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
 
-        $this->assertDatabaseHas(
-            'tasks',
-            array_merge(
-                $data,
-                ['created_by_id' => $user->id]
-            )
-        );
+        $addedTaskData = array_merge($data, ['created_by_id' => $this->user->id]);
+
+        $this->assertDatabaseHas('tasks', $addedTaskData);
     }
 
     public function testEdit()
     {
-        $this->setupUser();
+        $this->actingAs($this->user);
+
         $task = Task::inRandomOrder()->first();
+
         $response = $this->get(route('tasks.edit', $task));
+
         $response->assertOk()
             ->assertSee($task->name);
     }
 
     public function testUpdate()
     {
-        $this->setupUser();
+        $this->actingAs($this->user);
+
         $task = Task::inRandomOrder()->first();
         $status = TaskStatus::inRandomOrder()->first();
         $assignee = User::inRandomOrder()->first();
@@ -91,42 +91,39 @@ class TasksTest extends TestCase
             'status_id' => $status->id,
             'assigned_to_id' => $assignee->id
         ];
+
         $response = $this->patch(route('tasks.update', $task), $data);
 
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
 
-        $this->assertDatabaseHas(
-            'tasks',
-            array_merge(
-                $data,
-                ['id' => $task->id]
-            )
-        );
+        $task->fill($data);
+        $updatedTaskData = $task->only('id', 'name', 'description', 'status_id', 'assigned_to_id');
+
+        $this->assertDatabaseHas('tasks', $updatedTaskData);
     }
 
     public function testDestroy()
     {
-        $user = $this->setupUser();
+        $this->actingAs($this->user);
+
         $task = Task::factory()
-            ->state(['created_by_id' => $user->id])
+            ->state(['created_by_id' => $this->user->id])
             ->create();
-
-        $taskData = $task->only('id', 'name');
-
-        $this->assertDatabaseHas('tasks', $taskData);
 
         $response = $this->delete(route('tasks.destroy', $task));
 
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
 
+        $taskData = $task->only('id');
         $this->assertDatabaseMissing('tasks', $taskData);
     }
 
     public function testShow()
     {
         $task = Task::inRandomOrder()->first();
+
         $response = $this->get(route('tasks.show', $task));
 
         $response->assertOk()
@@ -135,16 +132,15 @@ class TasksTest extends TestCase
 
     public function testUnathorizedDestroy()
     {
+        $this->actingAs($this->user);
+
         $task = Task::factory()->create();
-        $taskData = $task->only('id', 'name');
 
-        $this->assertDatabaseHas('tasks', $taskData);
-
-        $this->setupUser();
         $response = $this->delete(route('tasks.destroy', $task));
 
         $response->assertForbidden();
 
+        $taskData = $task->only('id');
         $this->assertDatabaseHas('tasks', $taskData);
     }
 }
