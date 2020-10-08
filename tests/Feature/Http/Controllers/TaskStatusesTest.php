@@ -13,12 +13,12 @@ class TaskStatusesTest extends TestCase
     use RefreshDatabase;
     use WithFaker;
 
-    private bool $seed = true;
     private User $user;
 
     public function setUp(): void
     {
         parent::setUp();
+        $this->seed();
         $this->user = User::factory()->create();
     }
 

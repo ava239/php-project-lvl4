@@ -14,12 +14,12 @@ class TasksTest extends TestCase
     use RefreshDatabase;
     use WithFaker;
 
-    private bool $seed = true;
     private User $user;
 
     public function setUp(): void
     {
         parent::setUp();
+        $this->seed();
         Task::factory()->count(3)->create();
         $this->user = User::factory()->create();
     }
