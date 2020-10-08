@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskStatusController;
 use App\Http\Controllers\LabelController;
-use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +19,9 @@ use App\Http\Controllers\HomeController;
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
+
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::resource('task_statuses', TaskStatusController::class);
 Route::resource('tasks', TaskController::class);
 Route::resource('labels', LabelController::class);
