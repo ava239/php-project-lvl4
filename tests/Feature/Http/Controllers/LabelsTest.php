@@ -3,25 +3,10 @@
 namespace Tests\Feature\Http\Controllers;
 
 use App\Models\Label;
-use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class LabelsTest extends TestCase
 {
-    use RefreshDatabase;
-    use WithFaker;
-
-    private User $user;
-
-    public function setUp(): void
-    {
-        parent::setUp();
-        Label::factory()->count(3)->create();
-        $this->user = User::factory()->create();
-    }
-
     public function testIndex()
     {
         $label = Label::inRandomOrder()->first();

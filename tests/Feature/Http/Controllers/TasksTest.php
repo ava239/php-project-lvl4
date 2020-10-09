@@ -5,25 +5,10 @@ namespace Tests\Feature\Http\Controllers;
 use App\Models\Task;
 use App\Models\TaskStatus;
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class TasksTest extends TestCase
 {
-    use RefreshDatabase;
-    use WithFaker;
-
-    private User $user;
-
-    public function setUp(): void
-    {
-        parent::setUp();
-        $this->seed();
-        Task::factory()->count(3)->create();
-        $this->user = User::factory()->create();
-    }
-
     public function testIndex()
     {
         $task = Task::inRandomOrder()->first();

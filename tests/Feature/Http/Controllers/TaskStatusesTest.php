@@ -3,25 +3,10 @@
 namespace Tests\Feature\Http\Controllers;
 
 use App\Models\TaskStatus;
-use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class TaskStatusesTest extends TestCase
 {
-    use RefreshDatabase;
-    use WithFaker;
-
-    private User $user;
-
-    public function setUp(): void
-    {
-        parent::setUp();
-        $this->seed();
-        $this->user = User::factory()->create();
-    }
-
     public function testIndex()
     {
         $taskStatus = TaskStatus::inRandomOrder()->first();
