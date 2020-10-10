@@ -42,16 +42,15 @@
                     <td>{{ $task->created_at }}</td>
                     @auth
                         <td>
-                            @can('delete', $task)
-                                <a href="{{ route('tasks.destroy', $task) }}" data-confirm="{{ __('confirmation') }}"
-                                   data-method="delete" rel="nofollow">
-                                    {{ __('remove') }}
-                                </a>
-                            @endcan
                             @can('update', $task)
                                 <a href="{{ route('tasks.edit', $task) }}">
                                     {{ __('edit') }}
                                 </a>
+                            @endcan
+                            @can('delete', $task)
+                                <a href="{{ route('tasks.destroy', $task) }}" data-confirm="{{ __('confirmation') }}"
+                                   data-method="delete" rel="nofollow" class="text-danger">
+                                    {{ __('remove') }}</a>
                             @endcan
                         </td>
                     @endauth

@@ -23,17 +23,16 @@
                     <td>{{ $label->created_at }}</td>
                     @auth
                         <td>
-                            @can('delete', $label)
-                                <a href="{{ route('labels.destroy', $label) }}"
-                                   data-confirm="{{ __('confirmation') }}"
-                                   data-method="delete" rel="nofollow">
-                                    {{ __('remove') }}
-                                </a>
-                            @endcan
                             @can('update', $label)
                                 <a href="{{ route('labels.edit', $label) }}">
                                     {{ __('edit') }}
                                 </a>
+                            @endcan
+                            @can('delete', $label)
+                                <a href="{{ route('labels.destroy', $label) }}"
+                                   data-confirm="{{ __('confirmation') }}"
+                                   data-method="delete" rel="nofollow" class="text-danger">
+                                    {{ __('remove') }}</a>
                             @endcan
                         </td>
                     @endauth
