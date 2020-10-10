@@ -72,9 +72,9 @@ class TaskController extends Controller
             [
                 'name' => 'required',
                 'description' => 'max:500',
-                'status_id' => 'required|exists:App\Models\TaskStatus,id',
-                'assigned_to_id' => 'nullable|exists:App\Models\User,id',
-                'labels.*' => 'required|exists:App\Models\Label,id',
+                'status_id' => 'required|exists:task_statuses,id',
+                'assigned_to_id' => 'nullable|exists:users,id',
+                'labels.*' => 'required|exists:labels,id',
             ]
         );
 
@@ -124,9 +124,9 @@ class TaskController extends Controller
             [
                 'name' => 'required',
                 'description' => 'max:500',
-                'status_id' => 'required|exists:App\Models\TaskStatus,id',
-                'assigned_to_id' => 'nullable|exists:App\Models\User,id',
-                'labels.*' => 'required|exists:App\Models\Label,id',
+                'status_id' => 'required|exists:task_statuses,id',
+                'assigned_to_id' => 'nullable|exists:users,id',
+                'labels.*' => 'required|exists:labels,id',
             ]
         );
 
