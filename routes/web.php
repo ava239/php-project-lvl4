@@ -16,9 +16,7 @@ use App\Http\Controllers\LabelController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+Route::view('/', 'welcome')->name('welcome');
 
 Auth::routes();
 
