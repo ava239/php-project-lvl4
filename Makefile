@@ -36,11 +36,11 @@ deploy:
 	git push heroku
 
 lint:
-	composer phpcs
+	composer exec --verbose phpcs
 	composer exec --verbose phpstan analyse
 
 lint-fix:
-	composer phpcbf
+	composer exec --verbose phpcbf
 
 compose:
 	heroku local -f Procfile.dev
