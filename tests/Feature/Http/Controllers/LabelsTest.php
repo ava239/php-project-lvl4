@@ -58,17 +58,16 @@ class LabelsTest extends TestCase
         $this->actingAs($this->user);
 
         $label = Label::inRandomOrder()->first();
-        $data = [
+        $updateData = [
             'name' => $this->faker->text(20)
         ];
 
-        $response = $this->patch(route('labels.update', $label), $data);
+        $response = $this->patch(route('labels.update', $label), $updateData);
 
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
 
-        $label->fill($data);
-        $updatedLabelData = $label->only('id', 'name');
+        $updatedLabelData = array_merge($updateData, ['id' => $label->id]);
 
         $this->assertDatabaseHas('labels', $updatedLabelData);
     }

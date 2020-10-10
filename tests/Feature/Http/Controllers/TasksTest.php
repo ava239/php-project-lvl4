@@ -34,19 +34,19 @@ class TasksTest extends TestCase
 
         $status = TaskStatus::inRandomOrder()->first();
         $assignee = User::inRandomOrder()->first();
-        $data = [
+        $taskData = [
             'name' => $this->faker->name,
             'description' => $this->faker->text,
             'status_id' => $status->id,
             'assigned_to_id' => $assignee->id
         ];
 
-        $response = $this->post(route('tasks.store'), $data);
+        $response = $this->post(route('tasks.store'), $taskData);
 
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
 
-        $addedTaskData = array_merge($data, ['created_by_id' => $this->user->id]);
+        $addedTaskData = array_merge($taskData, ['created_by_id' => $this->user->id]);
 
         $this->assertDatabaseHas('tasks', $addedTaskData);
     }
@@ -70,20 +70,19 @@ class TasksTest extends TestCase
         $task = Task::inRandomOrder()->first();
         $status = TaskStatus::inRandomOrder()->first();
         $assignee = User::inRandomOrder()->first();
-        $data = [
+        $updateData = [
             'name' => $this->faker->text(20),
             'description' => $this->faker->text,
             'status_id' => $status->id,
             'assigned_to_id' => $assignee->id
         ];
 
-        $response = $this->patch(route('tasks.update', $task), $data);
+        $response = $this->patch(route('tasks.update', $task), $updateData);
 
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
 
-        $task->fill($data);
-        $updatedTaskData = $task->only('id', 'name', 'description', 'status_id', 'assigned_to_id');
+        $updatedTaskData = array_merge($updateData, ['id' => $task->id]);
 
         $this->assertDatabaseHas('tasks', $updatedTaskData);
     }

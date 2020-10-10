@@ -59,17 +59,16 @@ class TaskStatusesTest extends TestCase
         $this->actingAs($this->user);
 
         $taskStatus = TaskStatus::inRandomOrder()->first();
-        $data = [
+        $updateData = [
             'name' => $this->faker->text(20)
         ];
 
-        $response = $this->patch(route('task_statuses.update', $taskStatus), $data);
+        $response = $this->patch(route('task_statuses.update', $taskStatus), $updateData);
 
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
 
-        $taskStatus->fill($data);
-        $updatedTaskStatusData = $taskStatus->only('id', 'name');
+        $updatedTaskStatusData = array_merge($updateData, ['id' => $taskStatus->id]);
 
         $this->assertDatabaseHas('task_statuses', $updatedTaskStatusData);
     }
