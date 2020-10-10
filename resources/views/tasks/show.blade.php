@@ -7,13 +7,13 @@
                 <a href="{{ route('tasks.edit', $task) }}">&#9881;</a>
             @endauth
         </h1>
-        <p>{{ __('name') }}: {{ $task->name }}</p>
-        <p>{{ __('status') }}: {{ $task->status->name }}</p>
+        <p>{{ __('layout.headers.name') }}: {{ $task->name }}</p>
+        <p>{{ __('layout.headers.status') }}: {{ $task->status->name }}</p>
         @if($task->description)
-            <p>{{ __('description') }}: {{ $task->description }}</p>
+            <p>{{ __('layout.headers.description') }}: {{ $task->description }}</p>
         @endif
         @if($task->labels()->exists())
-            <p>{{ __('labels') }}: </p>
+            <p>{{ __('layout.headers.labels') }}: </p>
             <ul>
                 @foreach($task->labels as $label)
                     <li>{{ $label->name }}</li>

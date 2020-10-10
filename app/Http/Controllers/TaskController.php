@@ -89,7 +89,7 @@ class TaskController extends Controller
         $task->saveOrFail();
         $task->labels()->attach($request->input('labels'));
 
-        flash(__('tasks.created'))->success();
+        flash(__('tasks.flash.created'))->success();
 
         return redirect()
             ->route('tasks.show', $task);
@@ -139,7 +139,7 @@ class TaskController extends Controller
         $task->saveOrFail();
         $task->labels()->sync($request->input('labels'));
 
-        flash(__('tasks.updated'))->success();
+        flash(__('tasks.flash.updated'))->success();
 
         return redirect()
             ->route('tasks.show', $task);
@@ -148,7 +148,7 @@ class TaskController extends Controller
     public function destroy(Task $task)
     {
         $task->delete();
-        flash(__('tasks.deleted'))->success();
+        flash(__('tasks.flash.deleted'))->success();
 
         return redirect()
             ->route('tasks.index');

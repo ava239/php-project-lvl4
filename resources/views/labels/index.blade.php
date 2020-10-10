@@ -3,16 +3,16 @@
     <div class="container">
         <h1 class="mb-5">{{ __('labels.title') }}</h1>
         @auth
-            <a href="{{ route('labels.create') }}" class="btn btn-primary">{{ __('add_new') }}</a>
+            <a href="{{ route('labels.create') }}" class="btn btn-primary">{{ __('layout.buttons.add_new') }}</a>
         @endauth
         <table class="table mt-2">
             <thead>
             <tr>
-                <th>{{ __('id') }}</th>
-                <th>{{ __('name') }}</th>
-                <th>{{ __('created_at') }}</th>
+                <th>{{ __('layout.headers.id') }}</th>
+                <th>{{ __('layout.headers.name') }}</th>
+                <th>{{ __('layout.headers.created_at') }}</th>
                 @auth
-                    <th>{{ __('actions') }}</th>
+                    <th>{{ __('layout.headers.actions') }}</th>
                 @endauth
             </tr>
             </thead>
@@ -25,14 +25,14 @@
                         <td>
                             @can('update', $label)
                                 <a href="{{ route('labels.edit', $label) }}">
-                                    {{ __('edit') }}
+                                    {{ __('layout.buttons.edit') }}
                                 </a>
                             @endcan
                             @can('delete', $label)
                                 <a href="{{ route('labels.destroy', $label) }}"
-                                   data-confirm="{{ __('confirmation') }}"
+                                   data-confirm="{{ __('layout.confirmation') }}"
                                    data-method="delete" rel="nofollow" class="text-danger">
-                                    {{ __('remove') }}</a>
+                                    {{ __('layout.buttons.remove') }}</a>
                             @endcan
                         </td>
                     @endauth

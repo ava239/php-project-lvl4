@@ -1,2 +1,2 @@
-{{ BsForm::text('name', $taskStatus->name)->label(__('name')) }}
+{{ BsForm::text('name', $taskStatus->name)->label(__('layout.headers.name')) }}
 

@@ -5,7 +5,9 @@ return [
     'title' => 'Labels',
     'edit_title' => 'Edit Label',
     'create_title' => 'Add New Label',
-    'created' => 'Label has been added',
-    'updated' => 'Label has been updated',
-    'deleted' => 'Label has been deleted',
+    'flash' => [
+        'created' => 'Label has been added',
+        'updated' => 'Label has been updated',
+        'deleted' => 'Label has been deleted',
+    ],
 ];

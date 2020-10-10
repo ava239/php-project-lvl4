@@ -40,7 +40,7 @@ class LabelController extends Controller
         $taskStatus->fill($data);
         $taskStatus->saveOrFail();
 
-        flash(__('labels.created'))->success();
+        flash(__('labels.flash.created'))->success();
 
         return redirect()
             ->route('labels.index');
@@ -64,7 +64,7 @@ class LabelController extends Controller
         $label->fill($data);
         $label->saveOrFail();
 
-        flash(__('labels.updated'))->success();
+        flash(__('labels.flash.updated'))->success();
 
         return redirect()
             ->route('labels.index');
@@ -73,7 +73,7 @@ class LabelController extends Controller
     public function destroy(Label $label)
     {
         $label->delete();
-        flash(__('labels.deleted'))->success();
+        flash(__('labels.flash.deleted'))->success();
 
         return redirect()
             ->route('labels.index');

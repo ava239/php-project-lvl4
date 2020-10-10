@@ -5,7 +5,7 @@
         {{ BsForm::post(route('tasks.store'), ['class' => 'w-50']) }}
         @include('tasks.form')
         <div>
-            {{ BsForm::submit(__('create'))->primary() }}
+            {{ BsForm::submit(__('layout.buttons.create'))->primary() }}
         </div>
         {{ BsForm::close() }}
     </div>

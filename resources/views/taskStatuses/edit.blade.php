@@ -5,7 +5,7 @@
         {{ BsForm::patch(route('task_statuses.update', $taskStatus), ['class' => 'w-50']) }}
         @include('taskStatuses.form')
         <div>
-            {{ BsForm::submit(__('update'))->primary() }}
+            {{ BsForm::submit(__('layout.buttons.update'))->primary() }}
         </div>
         {{ BsForm::close() }}
     </div>
