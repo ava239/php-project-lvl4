@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5a765b15d2f44c294d6fd73d64a41dcd",
+    "content-hash": "56b4bd1d8103ee05c30f33aab37a2794",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -886,6 +886,112 @@
             "time": "2020-09-07T13:25:35+00:00"
         },
         {
+            "name": "laraeast/laravel-bootstrap-forms",
+            "version": "v5.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laraeast/laravel-bootstrap-forms.git",
+                "reference": "b2a1e949249b4a1a68df0524a21b842542f7d4e7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laraeast/laravel-bootstrap-forms/zipball/b2a1e949249b4a1a68df0524a21b842542f7d4e7",
+                "reference": "b2a1e949249b4a1a68df0524a21b842542f7d4e7",
+                "shasum": ""
+            },
+            "require": {
+                "laraeast/laravel-locales": "^3.0",
+                "laravelcollective/html": "^5.6|^6.0|^7.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.4",
+                "orchestra/testbench": "^5.3|^6.0"
+            },
+            "type": "package",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Laraeast\\LaravelBootstrapForms\\Providers\\BootstrapFormsServiceProvider"
+                    ],
+                    "aliases": {
+                        "BsForm": "Laraeast\\LaravelBootstrapForms\\Facades\\BsForm"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laraeast\\LaravelBootstrapForms\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ahmed Al-Shahawi",
+                    "email": "alshahawi@outlook.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Ahmed Fathy",
+                    "email": "aliraqi.dev@gmail.com"
+                }
+            ],
+            "description": "Provides an easy way to use bootstrap components within your Laravel projects.",
+            "time": "2020-09-15T08:49:42+00:00"
+        },
+        {
+            "name": "laraeast/laravel-locales",
+            "version": "v3.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laraeast/laravel-locales.git",
+                "reference": "762d4130f30d7740c98e3e4e33a5a5220486e5e4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laraeast/laravel-locales/zipball/762d4130f30d7740c98e3e4e33a5a5220486e5e4",
+                "reference": "762d4130f30d7740c98e3e4e33a5a5220486e5e4",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "~5.5|^6.0|^7.0|^8.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.4",
+                "orchestra/testbench": "~3.0|~4.0|~5.0|~6.0"
+            },
+            "type": "package",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Laraeast\\LaravelLocales\\Providers\\LocalesServiceProvider"
+                    ],
+                    "aliases": {
+                        "Locales": "Laraeast\\LaravelLocales\\Facades\\Locales"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laraeast\\LaravelLocales\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ahmed Aliraqi",
+                    "email": "aliraqi.dev@gmail.com"
+                }
+            ],
+            "description": "The package used to support multi locales in your application.",
+            "time": "2020-09-18T13:34:49+00:00"
+        },
+        {
             "name": "laravel/framework",
             "version": "v8.6.0",
             "source": {
@@ -1165,6 +1271,74 @@
                 "ui"
             ],
             "time": "2020-09-11T15:34:08+00:00"
+        },
+        {
+            "name": "laravelcollective/html",
+            "version": "v6.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LaravelCollective/html.git",
+                "reference": "3bb99be7502feb2129b375cd026ccb0fa4b66628"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/3bb99be7502feb2129b375cd026ccb0fa4b66628",
+                "reference": "3bb99be7502feb2129b375cd026ccb0fa4b66628",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/http": "^6.0|^7.0|^8.0",
+                "illuminate/routing": "^6.0|^7.0|^8.0",
+                "illuminate/session": "^6.0|^7.0|^8.0",
+                "illuminate/support": "^6.0|^7.0|^8.0",
+                "illuminate/view": "^6.0|^7.0|^8.0",
+                "php": ">=7.2.5"
+            },
+            "require-dev": {
+                "illuminate/database": "^6.0|^7.0|^8.0",
+                "mockery/mockery": "~1.0",
+                "phpunit/phpunit": "~7.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "6.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Collective\\Html\\HtmlServiceProvider"
+                    ],
+                    "aliases": {
+                        "Form": "Collective\\Html\\FormFacade",
+                        "Html": "Collective\\Html\\HtmlFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Collective\\Html\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adam Engebretson",
+                    "email": "adam@laravelcollective.com"
+                },
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                }
+            ],
+            "description": "HTML and Form Builders for the Laravel Framework",
+            "homepage": "https://laravelcollective.com",
+            "time": "2020-09-07T19:59:40+00:00"
         },
         {
             "name": "league/commonmark",
@@ -1582,58 +1756,6 @@
                 }
             ],
             "time": "2020-09-23T08:17:37+00:00"
-        },
-        {
-            "name": "netojose/laravel-bootstrap-4-forms",
-            "version": "3.0.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/netojose/laravel-bootstrap-4-forms.git",
-                "reference": "47eef3e73c534df1f9d2ce10cc2521b71c09b383"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/netojose/laravel-bootstrap-4-forms/zipball/47eef3e73c534df1f9d2ce10cc2521b71c09b383",
-                "reference": "47eef3e73c534df1f9d2ce10cc2521b71c09b383",
-                "shasum": ""
-            },
-            "type": "package",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "NetoJose\\Bootstrap4Forms\\Bootstrap4FormsServiceProvider"
-                    ],
-                    "aliases": {
-                        "Form": "NetoJose\\Bootstrap4Forms\\Bootstrap4FormsFacade"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "NetoJose\\Bootstrap4Forms\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "José Sousa",
-                    "email": "sputinykster@gmail.com"
-                }
-            ],
-            "description": "Bootstrap 4 form builder for Laravel 5",
-            "keywords": [
-                "Forms",
-                "bootstrap",
-                "composer",
-                "form-builder",
-                "laravel",
-                "package",
-                "php"
-            ],
-            "time": "2019-07-24T07:59:17+00:00"
         },
         {
             "name": "nikic/php-parser",

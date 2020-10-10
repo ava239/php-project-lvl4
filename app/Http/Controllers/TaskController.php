@@ -29,13 +29,19 @@ class TaskController extends Controller
             ->latest()
             ->paginate(15);
 
-        $filter = collect($request->input('filter'))->mapWithKeys(function ($value, $key) {
-            return ["filter[$key]" => $value];
-        })->filter();
+        $filter = $request->get('filter');
 
-        $taskStatuses = TaskStatus::all()->prepend(__('tasks.choose_status'), '');
-        $creators = User::all()->prepend(__('tasks.choose_creator'), '');
-        $assignees = User::all()->prepend(__('tasks.choose_assignee'), '');
+        $taskStatuses = TaskStatus::all()->mapWithKeys(function ($value) {
+            return [$value->id => $value->name];
+        });
+
+        $creators = User::all()->mapWithKeys(function ($value) {
+            return [$value->id => $value->name];
+        });
+
+        $assignees = User::all()->mapWithKeys(function ($value) {
+            return [$value->id => $value->name];
+        });
 
         return view('tasks.index', compact('tasks', 'taskStatuses', 'creators', 'assignees', 'filter'));
     }
@@ -44,9 +50,15 @@ class TaskController extends Controller
     {
         $task = new Task();
 
-        $taskStatuses = TaskStatus::all();
-        $users = User::all();
-        $labels = Label::all();
+        $taskStatuses = TaskStatus::all()->mapWithKeys(function ($value) {
+            return [$value->id => $value->name];
+        });
+        $users = User::all()->mapWithKeys(function ($value) {
+            return [$value->id => $value->name];
+        });
+        $labels = Label::all()->mapWithKeys(function ($value) {
+            return [$value->id => $value->name];
+        });
 
         $taskLabels = [];
 
@@ -90,9 +102,15 @@ class TaskController extends Controller
 
     public function edit(Task $task)
     {
-        $taskStatuses = TaskStatus::all();
-        $users = User::all();
-        $labels = Label::all();
+        $taskStatuses = TaskStatus::all()->mapWithKeys(function ($value) {
+            return [$value->id => $value->name];
+        });
+        $users = User::all()->mapWithKeys(function ($value) {
+            return [$value->id => $value->name];
+        });
+        $labels = Label::all()->mapWithKeys(function ($value) {
+            return [$value->id => $value->name];
+        });
 
         $taskLabels = $task->labels->keyBy('id')->keys()->toArray();
 

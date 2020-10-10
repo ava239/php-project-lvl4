@@ -2,11 +2,11 @@
 @section('content')
     <div class="container">
         <h1 class="mb-5">{{ __('labels.create_title') }}</h1>
-        {!! Form::open()->route('labels.store')->fill($label)->attrs(['class' => 'w-50']) !!}
+        {{ BsForm::post(route('labels.store'), ['class' => 'w-50']) }}
         @include('labels.form')
         <div>
-            {!! Form::submit(__('create')) !!}
+            {{ BsForm::submit(__('create'))->primary() }}
         </div>
-        {!! Form::close() !!}
+        {{ BsForm::close() }}
     </div>
 @endsection

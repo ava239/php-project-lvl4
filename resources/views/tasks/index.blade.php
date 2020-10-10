@@ -4,15 +4,15 @@
         <h1 class="mb-5">{{ __('tasks.title') }}</h1>
         <div class="d-flex">
             <div>
-                {!! Form::open()->get()->formInline()->fill($filter)->attrs(['class' => 'filter-form']) !!}
-                {!! Form::select('filter[status_id]', null, $taskStatuses) !!}
-                {!! Form::select('filter[created_by_id]', null, $creators) !!}
-                {!! Form::select('filter[assigned_to_id]', null, $assignees) !!}
-                {!! Form::submit(__('apply'))->outline() !!}
-                @if($filter->count())
+                {{ BsForm::get(route('tasks.index'), ['class' => 'form-inline']) }}
+                {{ BsForm::select('filter[status_id]', $taskStatuses, optional($filter)['status_id'])->attribute('class', 'form-control mr-2')->placeholder(__('tasks.choose_status')) }}
+                {{ BsForm::select('filter[created_by_id]', $creators, optional($filter)['created_by_id'])->attribute('class', 'form-control mr-2')->placeholder(__('tasks.choose_creator')) }}
+                {{ BsForm::select('filter[assigned_to_id]', $assignees, optional($filter)['assigned_to_id'])->attribute('class', 'form-control mr-2')->placeholder(__('tasks.choose_assignee')) }}
+                {{ BsForm::submit(__('apply'))->primary()->attribute('class', 'btn btn-outline-primary mr-2') }}
+                @if($filter)
                     <a href="{{ route('tasks.index') }}" class="btn btn-outline-danger">{{ __('reset') }}</a>
                 @endif
-                {!! Form::close() !!}
+                {{ BsForm::close() }}
             </div>
             @auth
                 <a href="{{ route('tasks.create') }}" class="btn btn-primary ml-auto">{{ __('add_new') }}</a>

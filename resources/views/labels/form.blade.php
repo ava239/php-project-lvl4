@@ -1,2 +1,2 @@
-{!! Form::text('name', __('name')) !!}
-{!! Form::textarea('description', __('description'))->attrs(['rows' => 10]) !!}
+{{ BsForm::text('name', $label->name)->label(__('name')) }}
+{{ BsForm::textarea('description', $label->description)->label(__('description')) }}

@@ -1,2 +1,2 @@
-{!! Form::text('name', __('name')) !!}
+{{ BsForm::text('name', $taskStatus->name)->label(__('name')) }}
 

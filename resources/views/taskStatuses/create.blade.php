@@ -2,11 +2,11 @@
 @section('content')
     <div class="container">
         <h1 class="mb-5">{{ __('task_statuses.create_title') }}</h1>
-        {!! Form::open()->route('task_statuses.store')->fill($taskStatus)->attrs(['class' => 'w-50']) !!}
+        {{ BsForm::open(route('task_statuses.store'), ['class' => 'w-50']) }}
         @include('taskStatuses.form')
         <div>
-            {!! Form::submit(__('create')) !!}
+            {{ BsForm::submit(__('create'))->primary() }}
         </div>
-        {!! Form::close() !!}
+        {{ Form::close() }}
     </div>
 @endsection
