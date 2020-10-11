@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+                <div class="card-header">{{ __('layout.texts.reset_password') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,8 +14,8 @@
                         </div>
                     @endif
                         {{ BsForm::post(route('password.email')) }}
-                        {{ BsForm::email('email')->label(__('E-Mail Address'))->style('login') }}
-                        {{ BsForm::submit(__('Send Password Reset Link'))->style('login') }}
+                        {{ BsForm::email('email')->label(__('layout.texts.email'))->style('login') }}
+                        {{ BsForm::submit(__('layout.texts.send_reset_link'))->style('login') }}
                         {{ BsForm::close() }}
                 </div>
             </div>

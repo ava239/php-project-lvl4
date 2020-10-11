@@ -30,7 +30,7 @@
                             @endcan
                             @can('delete', $label)
                                 <a href="{{ route('labels.destroy', $label) }}"
-                                   data-confirm="{{ __('layout.confirmation') }}"
+                                   data-confirm="{{ __('layout.texts.confirmation') }}"
                                    data-method="delete" rel="nofollow" class="text-danger">
                                     {{ __('layout.buttons.remove') }}</a>
                             @endcan

@@ -48,7 +48,7 @@
                                 </a>
                             @endcan
                             @can('delete', $task)
-                                <a href="{{ route('tasks.destroy', $task) }}" data-confirm="{{ __('layout.confirmation') }}"
+                                <a href="{{ route('tasks.destroy', $task) }}" data-confirm="{{ __('layout.texts.confirmation') }}"
                                    data-method="delete" rel="nofollow" class="text-danger">
                                     {{ __('layout.buttons.remove') }}</a>
                             @endcan

@@ -27,12 +27,12 @@
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
+            <a class="navbar-brand" href="{{ route('welcome') }}">
                 {{ config('app.name') }}
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="{{ __('Toggle navigation') }}">
+                    aria-label="{{ __('layout.texts.toggle_navigation') }}">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -49,10 +49,10 @@
                     <!-- Authentication Links -->
                     @guest
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('layout.texts.login') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('layout.texts.register') }}</a>
                         </li>
                     @else
                         <li class="nav-item dropdown">
@@ -63,7 +63,7 @@
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}" data-method="post">
-                                    {{ __('Logout') }}
+                                    {{ __('layout.texts.logout') }}
                                 </a>
                             </div>
                         </li>
