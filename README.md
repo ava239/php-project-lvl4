@@ -64,3 +64,7 @@ $ make compose-up
 $ make compose-migrate
 ```
 There are few commands in Makefile to help you with this setup later.
+
+# Mail setup
+By default, mails configured to save in logs/mail.log file.  
+You can change send method to anything more suitable for your needs in *.env* file for local development or with env variables in production.  
