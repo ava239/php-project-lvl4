@@ -15,4 +15,11 @@ class TaskStatus extends Model
     {
         return $this->hasMany(Task::class, 'status_id');
     }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(fn($status) => !$status->tasks()->exists());
+    }
 }
