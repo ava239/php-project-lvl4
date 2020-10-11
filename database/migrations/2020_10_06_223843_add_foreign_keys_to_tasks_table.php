@@ -36,7 +36,9 @@ class AddForeignKeysToTasksTable extends Migration
     public function down()
     {
         Schema::table('tasks', function (Blueprint $table) {
-            $table->dropForeign(['status_id', 'created_by_id', 'assigned_to_id']);
+            $table->dropForeign('tasks_status_id_foreign');
+            $table->dropForeign('tasks_created_by_id_foreign');
+            $table->dropForeign('tasks_assigned_to_id_foreign');
         });
     }
 }

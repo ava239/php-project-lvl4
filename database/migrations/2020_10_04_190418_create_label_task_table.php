@@ -21,13 +21,11 @@ class CreateLabelTaskTable extends Migration
 
             $table->foreign('task_id')
                 ->references('id')
-                ->on('tasks')
-                ->cascadeOnDelete();
+                ->on('tasks');
 
             $table->foreign('label_id')
                 ->references('id')
-                ->on('labels')
-                ->cascadeOnDelete();
+                ->on('labels');
         });
     }
 
