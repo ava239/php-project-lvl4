@@ -4,12 +4,17 @@
     @endif
 
     <div class="col-md-6">
-        <input id="{{ $name }}" type="email" class="form-control @error($name) is-invalid @enderror" name="{{ $name }}" value="{{ $value ?? old($name) }}" required autocomplete="email" autofocus>
+        <input id="{{ $name }}"
+               type="email"
+               class="form-control @error($name) is-invalid @enderror"
+               name="{{ $name }}"
+               value="{{ $value ?? old($name) }}"
+               required autocomplete="email" autofocus>
 
         @error($name)
         <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+            <strong>{{ $message }}</strong>
+        </span>
         @enderror
     </div>
 </div>
