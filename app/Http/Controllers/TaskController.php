@@ -130,8 +130,8 @@ class TaskController extends Controller
             ]
         );
 
-        $task->name = $request->input('name');
-        $task->description = $request->input('description');
+        $data = $request->only(['name', 'description']);
+        $task->fill($data);
 
         $task->status()->associate($request->input('status_id'));
         $task->assignee()->associate($request->input('assigned_to_id'));
