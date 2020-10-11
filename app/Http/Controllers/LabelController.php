@@ -76,7 +76,10 @@ class LabelController extends Controller
 
     public function destroy(Label $label)
     {
+        $label->tasks()->sync([]);
+
         $label->delete();
+
         flash(__('labels.flash.deleted'))->success();
 
         return redirect()
