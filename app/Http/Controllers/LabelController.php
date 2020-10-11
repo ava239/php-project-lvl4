@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Label;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class LabelController extends Controller
 {
@@ -56,7 +57,10 @@ class LabelController extends Controller
         $data = $this->validate(
             $request,
             [
-                'name' => 'required|unique:labels,name,' . $label->id,
+                'name' => [
+                    'required',
+                    Rule::unique('labels', 'name')->ignore($label),
+                ],
                 'description' => 'max:500',
             ]
         );
