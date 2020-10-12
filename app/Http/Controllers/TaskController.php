@@ -25,7 +25,7 @@ class TaskController extends Controller
                 AllowedFilter::exact('status_id'),
                 AllowedFilter::exact('assigned_to_id'),
                 AllowedFilter::exact('created_by_id')
-            ])
+            ])->with(['status', 'creator', 'assignee'])
             ->latest()
             ->paginate(15);
 
@@ -147,7 +147,7 @@ class TaskController extends Controller
 
     public function destroy(Task $task)
     {
-        $task->labels()->sync([]);
+        $task->labels()->detach();
 
         $task->delete();
 

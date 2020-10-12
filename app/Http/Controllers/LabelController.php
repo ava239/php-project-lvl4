@@ -76,7 +76,7 @@ class LabelController extends Controller
 
     public function destroy(Label $label)
     {
-        $label->tasks()->sync([]);
+        $label->tasks()->detach();
 
         $label->delete();
 
