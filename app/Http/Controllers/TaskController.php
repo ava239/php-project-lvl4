@@ -25,7 +25,8 @@ class TaskController extends Controller
                 AllowedFilter::exact('status_id'),
                 AllowedFilter::exact('assigned_to_id'),
                 AllowedFilter::exact('created_by_id')
-            ])->with(['status', 'creator', 'assignee'])
+            ])
+            ->with(['status', 'creator', 'assignee'])
             ->latest()
             ->paginate(15);
 
