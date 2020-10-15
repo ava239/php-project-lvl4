@@ -1,7 +1,4 @@
-@php
-    use function App\Helpers\navLink;
-@endphp
-    <!doctype html>
+<!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -39,9 +36,9 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-                    <li>{!! navLink('tasks.index', __('tasks.menu_link')) !!}</li>
-                    <li>{!! navLink('task_statuses.index', __('task_statuses.menu_link')) !!}</li>
-                    <li>{!! navLink('labels.index', __('labels.menu_link')) !!}</li>
+                    <li>{!! Helper::navLink('tasks.index', __('tasks.menu_link')) !!}</li>
+                    <li>{!! Helper::navLink('task_statuses.index', __('task_statuses.menu_link')) !!}</li>
+                    <li>{!! Helper::navLink('labels.index', __('labels.menu_link')) !!}</li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
