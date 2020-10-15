@@ -33,6 +33,6 @@ class TaskPolicy
 
     public function delete(User $user, Task $task)
     {
-        return $task->isCreatedBy($user);
+        return $user->is($task->creator);
     }
 }

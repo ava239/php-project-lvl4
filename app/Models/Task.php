@@ -30,9 +30,4 @@ class Task extends Model
     {
         return $this->belongsToMany(Label::class)->withTimestamps();
     }
-
-    public function isCreatedBy(User $user): bool
-    {
-        return $this->creator->id === $user->id;
-    }
 }
