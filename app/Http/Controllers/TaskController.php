@@ -32,9 +32,9 @@ class TaskController extends Controller
 
         $filter = $request->get('filter');
 
-        $taskStatuses = TaskStatus::all()->pluck('name', 'id');
-        $creators = User::all()->pluck('name', 'id');
-        $assignees = User::all()->pluck('name', 'id');
+        $taskStatuses = TaskStatus::pluck('name', 'id');
+        $creators = User::pluck('name', 'id');
+        $assignees = User::pluck('name', 'id');
 
         return view('tasks.index', compact('tasks', 'taskStatuses', 'creators', 'assignees', 'filter'));
     }
@@ -43,9 +43,9 @@ class TaskController extends Controller
     {
         $task = new Task();
 
-        $taskStatuses = TaskStatus::all()->pluck('name', 'id');
-        $users = User::all()->pluck('name', 'id');
-        $labels = Label::all()->pluck('name', 'id');
+        $taskStatuses = TaskStatus::pluck('name', 'id');
+        $users = User::pluck('name', 'id');
+        $labels = Label::pluck('name', 'id');
 
         $taskLabels = [];
 
@@ -89,9 +89,9 @@ class TaskController extends Controller
 
     public function edit(Task $task)
     {
-        $taskStatuses = TaskStatus::all()->pluck('name', 'id');
-        $users = User::all()->pluck('name', 'id');
-        $labels = Label::all()->pluck('name', 'id');
+        $taskStatuses = TaskStatus::pluck('name', 'id');
+        $users = User::pluck('name', 'id');
+        $labels = Label::pluck('name', 'id');
 
         $taskLabels = $task->labels->modelKeys();
 
