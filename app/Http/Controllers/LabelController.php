@@ -37,9 +37,9 @@ class LabelController extends Controller
             ]
         );
 
-        $taskStatus = new Label();
-        $taskStatus->fill($data);
-        $taskStatus->saveOrFail();
+        $label = new Label();
+        $label->fill($data);
+        $label->saveOrFail();
 
         flash(__('labels.flash.created'))->success();
 

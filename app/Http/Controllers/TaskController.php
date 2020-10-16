@@ -47,9 +47,9 @@ class TaskController extends Controller
         $users = User::pluck('name', 'id');
         $labels = Label::pluck('name', 'id');
 
-        $taskLabels = [];
+        $taskLabelIds = [];
 
-        return view('tasks.create', compact('task', 'taskStatuses', 'users', 'labels', 'taskLabels'));
+        return view('tasks.create', compact('task', 'taskStatuses', 'users', 'labels', 'taskLabelIds'));
     }
 
     public function store(Request $request)
@@ -93,9 +93,9 @@ class TaskController extends Controller
         $users = User::pluck('name', 'id');
         $labels = Label::pluck('name', 'id');
 
-        $taskLabels = $task->labels->modelKeys();
+        $taskLabelIds = $task->labels->modelKeys();
 
-        return view('tasks.edit', compact('task', 'taskStatuses', 'users', 'labels', 'taskLabels'));
+        return view('tasks.edit', compact('task', 'taskStatuses', 'users', 'labels', 'taskLabelIds'));
     }
 
     public function update(Request $request, Task $task)
